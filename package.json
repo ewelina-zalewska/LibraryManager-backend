@@ -4,14 +4,22 @@
   "version": "0.0.0",
   "main": "app.js",
   "type": "module",
+  "imports": {
+    "#*": "./src/*"
+  },
   "scripts": {
-    "dev": "nodemon app.js"
+    "dev": "nodemon --watch src --ext ts --exec \"tsc --noEmit && node --import=./src/dev/register.js src/app.ts"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.21.2"
   },
   "devDependencies": {
-    "nodemon": "^3.1.9"
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.2",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
   }
 }
