@@ -11,12 +11,16 @@
     "dev": "nodemon --watch src --ext ts --exec \"tsc --noEmit && node --import=./src/dev/register.js src/app.ts"
   },
   "dependencies": {
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2"
   },
   "devDependencies": {
+    "@types/cookie-parser": "^1.4.8",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
+    "@types/jsonwebtoken": "^9.0.8",
     "@types/node": "^22.13.2",
     "nodemon": "^3.1.9",
     "ts-node": "^10.9.2",
