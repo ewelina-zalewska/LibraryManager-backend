@@ -36,6 +36,7 @@ router.post("/", (req: Request, res: Response) => {
       username,
       email,
       password: hashedPassword,
+      role: "user",
       bookId: [],
     };
 

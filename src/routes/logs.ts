@@ -16,7 +16,8 @@ router.get("/", (req: Request, res: Response) => {
 });
 
 router.post("/", (req: Request, res: Response) => {
-  const { action, created_on, created_at, userID }: LogRequest = req.body;
+  const { action, bookId, created_on, created_at, userID }: LogRequest =
+    req.body;
 
   readFile(dataPath, (err, data) => {
     if (err) throw err;
@@ -26,6 +27,7 @@ router.post("/", (req: Request, res: Response) => {
     const newLog: Log = {
       id,
       action,
+      bookId,
       created_on,
       created_at,
       userID,

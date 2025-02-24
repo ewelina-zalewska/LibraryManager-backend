@@ -15,7 +15,8 @@ export interface Book {
   author: string;
   copies: number;
   description: string;
-  releaseYear: string;
+  releaseDate: string;
+  numberOfborrowedBooks: number;
 }
 
 //new User
@@ -48,6 +49,7 @@ export interface Log {
     | "Logout"
     | "Borrowing a book"
     | "Returning the borrowed book";
+  bookId: string | null;
   created_on: string;
   created_at: string;
   userID: string;

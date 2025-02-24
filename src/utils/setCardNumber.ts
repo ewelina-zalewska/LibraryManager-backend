@@ -1,5 +1,5 @@
 ﻿export const setCardNumber = (name: string) => {
-  const randomId = Math.round(Math.random() * 10000);
+  const randomId = Math.round(Math.random() * 100000);
   const letters = name.slice(0, 2).toUpperCase();
   const date = new Date();
   const year = date.getFullYear();
