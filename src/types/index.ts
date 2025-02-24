@@ -1,4 +1,15 @@
-﻿export interface Book {
+﻿declare global {
+  namespace Express {
+    interface Request {
+      role?: string;
+      login?: string;
+      name?: string;
+    }
+  }
+}
+
+//Book
+export interface Book {
   id: string;
   title: string;
   author: string;
@@ -7,11 +18,13 @@
   releaseYear: string;
 }
 
+//new User
 export interface User {
   id: string;
   username: string;
   email: string;
   password: string;
+  role: "user" | "admin";
   bookId: string[];
 }
 
@@ -25,6 +38,7 @@ export interface UsersJSON {
   users: User[];
 }
 
+//Log
 export interface Log {
   id: string;
   action:
@@ -43,4 +57,10 @@ export type LogRequest = Omit<Log, "id">;
 
 export interface LogsJSON {
   logs: Log[];
+}
+
+//Login
+export interface LoginRequest {
+  login: string;
+  password: string;
 }
