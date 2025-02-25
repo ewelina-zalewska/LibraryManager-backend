@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import { getData } from "./config/getData.ts";
 import booksRoutes from "#routes/books.ts";
+import borrowedBooksRoutes from "#routes/borrowedBooks.ts";
 import registerRoutes from "#routes/register.ts";
 import logsRoutes from "#routes/logs.ts";
 import loginRoutes from "#routes/login.ts";
@@ -29,6 +30,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.use("/books", booksRoutes);
+app.use("/borrowedBooks", borrowedBooksRoutes);
 app.use("/register", registerRoutes);
 app.use("/logs", logsRoutes);
 app.use("/auth/admin", authAdminRoutes);

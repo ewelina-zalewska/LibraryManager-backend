@@ -1,7 +1,7 @@
 ﻿import fs from "fs";
 import express, { Request, Response } from "express";
 import { readFile } from "fs";
-import { Book } from "#types/index.ts";
+import { Book, NumberOfCopiesRequest } from "#types/index.ts";
 
 const filePath = "./src/db/books.json";
 
@@ -47,9 +47,9 @@ router.patch("/:id", (req: Request, res: Response) => {
 
   readFile(filePath, (err, data) => {
     if (err) throw err;
-    const { body } = req;
+    const { copies, numberOfborrowedBooks }: NumberOfCopiesRequest = req.body;
 
-    if (body.copies < 0)
+    if (copies < 0)
       return res.status(200).json({
         status: "fail",
         message: "there is no book to borrow",
@@ -59,24 +59,19 @@ router.patch("/:id", (req: Request, res: Response) => {
     const book = FIND_BOOK(books, bookID);
 
     if (book) {
-      Object.assign(book, body);
+      Object.assign(book, { copies, numberOfborrowedBooks });
 
       fs.writeFile(filePath, JSON.stringify(books, null, 2), (err) => {
         if (err) {
           return res.status(500).json({
             status: "fail",
-            message: "The book could not be borrowed.",
+            message: "The number of copies has not changed",
           });
         }
 
         res.status(200).json({
           status: "success",
-          message: "The book has been successfully borrowed",
-          action: "Borrowing a book",
-          bookId: book.id,
-          data: {
-            books: book,
-          },
+          message: "The number of copies has changed",
         });
       });
     }

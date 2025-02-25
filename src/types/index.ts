@@ -19,6 +19,39 @@ export interface Book {
   numberOfborrowedBooks: number;
 }
 
+export interface NumberOfCopiesRequest {
+  copies: number;
+  numberOfborrowedBooks: number;
+}
+
+export interface BorrowRequest {
+  status: "Borrowed";
+  bookId: string;
+  title: string;
+  author: string;
+  releaseDate: string;
+}
+
+export interface BorrowedBook {
+  id: string;
+  status: "Borrowed" | "Returned" | "Not returned";
+  userId: string;
+  bookId: string;
+  title: string;
+  author: string;
+  releaseDate: string;
+  borrowed_on: string;
+  borrowed_at: string;
+  returned_on: string | null;
+  returned_at: string | null;
+  deadline: string;
+  deadlineExceeded: boolean;
+  notice: boolean;
+}
+export interface BorrowedBooksJSON {
+  borrowedBooks: BorrowedBook[];
+}
+
 //new User
 export interface User {
   id: string;
