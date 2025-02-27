@@ -19,9 +19,21 @@ export interface Book {
   numberOfborrowedBooks: number;
 }
 
+export interface BookRequest {
+  title: string;
+  author: string;
+  copies: number;
+  description: string;
+  releaseDate: string;
+}
+
 export interface NumberOfCopiesRequest {
   copies: number;
   numberOfborrowedBooks: number;
+}
+
+export interface NoticeRequest {
+  notice: boolean;
 }
 
 export interface BorrowRequest {
@@ -48,10 +60,15 @@ export interface BorrowedBook {
   deadlineExceeded: boolean;
   notice: boolean;
 }
+export type BorrowedBookRequest = BorrowedBook;
+
 export interface BorrowedBooksJSON {
   borrowedBooks: BorrowedBook[];
 }
 
+export interface BooksJSON {
+  books: Book[];
+}
 //new User
 export interface User {
   id: string;
@@ -81,7 +98,11 @@ export interface Log {
     | "Login"
     | "Logout"
     | "Borrowing a book"
-    | "Returning the borrowed book";
+    | "Returning the borrowed book"
+    | "Delete Book"
+    | "Update Book"
+    | "Adding a book";
+
   bookId: string | null;
   created_on: string;
   created_at: string;

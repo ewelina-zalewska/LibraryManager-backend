@@ -10,7 +10,7 @@ const router = express.Router();
 router.get("/", (req: Request, res: Response) => {
   readFile(dataPath, (err, data) => {
     if (err) throw err;
-    const jsonData: Log[] = JSON.parse(data.toString());
+    const jsonData: LogsJSON = JSON.parse(data.toString());
     res.json(jsonData);
   });
 });
