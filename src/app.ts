@@ -12,6 +12,7 @@ import loginRoutes from "#routes/login.ts";
 import logoutRoutes from "#routes/logout.ts";
 import authAdminRoutes from "#routes/auth/admin.ts";
 import authUserRoutes from "#routes/auth/user.ts";
+import deleteAccountRoutes from "#routes/deleteAccount.ts";
 
 const { PORT, FRONTEND_PORT } = getData();
 
@@ -37,6 +38,7 @@ app.use("/auth/admin", authAdminRoutes);
 app.use("/auth/user", authUserRoutes);
 app.use("/login", loginRoutes);
 app.use("/logout", logoutRoutes);
+app.use("/deleteAccount", deleteAccountRoutes);
 
 app.get("/", (req, res) => {
   res.sendStatus(200);

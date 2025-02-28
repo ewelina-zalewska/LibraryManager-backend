@@ -4,14 +4,42 @@ import { User, UserRequest, UsersJSON } from "#types/index.ts";
 import { readFile, writeFile } from "fs";
 import { setCardNumber } from "#utils/setCardNumber.ts";
 import { setPassword } from "#utils/setPassword.ts";
+import { withAuth } from "#utils/withAuth.ts";
 
 const dataPath: string = "./src/db/users.json";
-const FIND_USER = (users: User[], email: string) =>
-  Object.values(users).some((user) => user.email === email);
+const FIND_USER = (users: User[], data: string) =>
+  Object.values(users).some((user) => user.email === data);
 
 const router = express.Router();
+
+const HANDLE_ERROR_404 = (
+  res: Response,
+  element: User | undefined,
+  id: string
+) => {
+  if (!element) {
+    return res.status(404).json({
+      status: "fail",
+      message: `No book with the ID of ${id}`,
+    });
+  }
+};
+
 router.get("/", (req: Request, res: Response) => {
   res.end();
+});
+
+router.get("/:id", withAuth, (req: Request, res: Response) => {
+  const { id: userId } = req.params;
+
+  readFile(dataPath, (err, data) => {
+    if (err) throw err;
+    const jsonData: UsersJSON = JSON.parse(data.toString());
+    const { users } = jsonData;
+    const user = Object.values(users).find((user) => user.id === userId);
+    HANDLE_ERROR_404(res, user, userId);
+    res.json(user);
+  });
 });
 
 router.post("/", (req: Request, res: Response) => {
@@ -55,4 +83,37 @@ router.post("/", (req: Request, res: Response) => {
   });
 });
 
+router.delete("/:id", (req: Request, res: Response) => {
+  const { id: userId } = req.params;
+  res.clearCookie("token");
+  readFile(dataPath, (err, data) => {
+    if (err) throw err;
+    const jsonData: UsersJSON = JSON.parse(data.toString());
+
+    const userIndex = jsonData.users.findIndex((user) => user.id === userId);
+
+    if (userIndex < 0)
+      return res.status(404).json({
+        status: "fail",
+        message: "User cannot be found",
+      });
+
+    jsonData.users.splice(userIndex, 1);
+
+    writeFile(dataPath, JSON.stringify(jsonData, null, 2), (err) => {
+      if (err) {
+        return res.status(500).json({
+          status: "fail",
+          message: "The user account cannot be deleted",
+        });
+      }
+
+      res.status(200).json({
+        status: "success",
+        message: "The user account has been deleted successfully",
+        data: jsonData.users[userIndex],
+      });
+    });
+  });
+});
 export default router;
