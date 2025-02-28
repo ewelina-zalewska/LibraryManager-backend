@@ -30,7 +30,7 @@ const HANDLE_ERROR_404 = (
 
 router.get("/", (req: Request, res: Response) => {
   readFile(filePath, (err, data) => {
-    if (err) console.log(err);
+    if (err) throw err;
     const jsonData: BorrowedBooksJSON = JSON.parse(data.toString());
     res.json(jsonData);
   });
@@ -193,7 +193,7 @@ router.put("/:id", (req: Request, res: Response) => {
 
         res.status(200).json({
           status: "success",
-          message: "The book data has not been changed successfully",
+          message: "The book data has been changed successfully",
           action: "Update book",
           bookId: bookID,
         });

@@ -1,0 +1,94 @@
+{
+  "books": [
+    {
+      "id": "1",
+      "title": "Lorem ipsum 1",
+      "author": "Lorem ipsum 1",
+      "copies": 6,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ",
+      "releaseDate": "2024-02-05",
+      "numberOfborrowedBooks": 0
+    },
+    {
+      "id": "2",
+      "title": "Lorem ipsum 2",
+      "author": "Lorem ipsum 2",
+      "copies": 4,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ",
+      "releaseDate": "2000-02-05",
+      "numberOfborrowedBooks": 0
+    },
+    {
+      "id": "3",
+      "title": "Lorem ipsum 3",
+      "author": "Lorem ipsum 3",
+      "copies": 7,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ",
+      "releaseDate": "2025-02-05",
+      "numberOfborrowedBooks": 0
+    },
+    {
+      "id": "4",
+      "title": "Lorem ipsum 4",
+      "author": "Lorem ipsum 4",
+      "copies": 7,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ",
+      "releaseDate": "2014-04-05",
+      "numberOfborrowedBooks": 0
+    },
+    {
+      "id": "5",
+      "title": "Lorem ipsum 5",
+      "author": "Lorem ipsum 5",
+      "copies": 6,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ",
+      "releaseDate": "2024-02-05",
+      "numberOfborrowedBooks": 0
+    },
+    {
+      "id": "6",
+      "title": "Lorem ipsum 6",
+      "author": "Lorem ipsum 6",
+      "copies": 4,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ",
+      "releaseDate": "2000-02-05",
+      "numberOfborrowedBooks": 0
+    },
+    {
+      "id": "8",
+      "title": "Lorem ipsum 8",
+      "author": "Lorem ipsum 8",
+      "copies": 7,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ",
+      "releaseDate": "2025-02-05",
+      "numberOfborrowedBooks": 0
+    },
+    {
+      "id": "9",
+      "title": "Lorem ipsum 9",
+      "author": "Lorem ipsum 9",
+      "copies": 7,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ",
+      "releaseDate": "1998-04-05",
+      "numberOfborrowedBooks": 0
+    },
+    {
+      "id": "9",
+      "title": "Lorem ipsum 9",
+      "author": "Lorem ipsum 9",
+      "copies": 7,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ",
+      "releaseDate": "1988-02-05",
+      "numberOfborrowedBooks": 0
+    },
+    {
+      "id": "10",
+      "title": "Lorem ipsum 10",
+      "author": "Lorem ipsum 10",
+      "copies": 4,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ",
+      "releaseDate": "1979-04-05",
+      "numberOfborrowedBooks": 0
+    }
+  ]
+}

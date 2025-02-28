@@ -143,7 +143,7 @@ router.delete("/:id", (req: Request, res: Response) => {
 
     const { books } = booksObject;
     const bookIndex = books.findIndex((book) => book.id === bookID);
-    console.log(bookIndex);
+  
 
     if (bookIndex < 0)
       return res.status(404).json({
