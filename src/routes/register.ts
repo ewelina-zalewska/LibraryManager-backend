@@ -5,7 +5,9 @@ import { readFile, writeFile } from "fs";
 import { setCardNumber } from "#utils/setCardNumber.ts";
 import { setPassword } from "#utils/setPassword.ts";
 import { withAuth } from "#utils/withAuth.ts";
+import { getData } from "../config/getData.ts";
 
+const { ADMIN_CODE } = getData();
 const dataPath: string = "./src/db/users.json";
 const FIND_USER = (users: User[], data: string) =>
   Object.values(users).some((user) => user.email === data);
@@ -43,7 +45,9 @@ router.get("/:id", withAuth, (req: Request, res: Response) => {
 });
 
 router.post("/", (req: Request, res: Response) => {
-  const { username, email, password }: UserRequest = req.body;
+  const { username, email, password, accessCode }: UserRequest = req.body;
+
+  const role = accessCode === ADMIN_CODE ? "admin" : "user";
 
   readFile(dataPath, (err, data) => {
     if (err) throw err;
@@ -64,7 +68,7 @@ router.post("/", (req: Request, res: Response) => {
       username,
       email,
       password: hashedPassword,
-      role: "user",
+      role,
       bookId: [],
     };
 

@@ -83,6 +83,7 @@ export interface UserRequest {
   username: string;
   email: string;
   password: string;
+  accessCode?: string;
 }
 
 export interface UsersJSON {
